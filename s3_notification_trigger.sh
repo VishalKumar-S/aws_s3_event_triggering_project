@@ -60,18 +60,19 @@ sleep 5
 aws lambda create-function \
 --region "$aws_region"\
 --function-name "$lambda_func_name" \
---zip-file "fileb://s3-lambda-function.zip"\
---handler "s3-lambda-function/s3-lambda-function.lambda_handler" \
 --runtime "python3.8" \
---role "arn:aws:iam::$aws_account_id:role/$role_name" \
+--handler "s3-lambda-function/s3-lambda-function.lambda_handler" \
+--memory-size 128\
 --timeout 30\
---memory-size 128
+--role "arn:aws:iam::$aws_account_id:role/$role_name" \
+--zip-file "fileb://s3-lambda-function.zip"
+
 
 #add invoke permissions to the s3 bucket to invoke lambda
 aws lambda add-permission \
     --function-name "$lambda_func_name" \
-    --action lambda:InvokeFunction \
     --statement-id "s3-lambda-sns" \
+    --action "lambda:InvokeFunction" \
     --principal s3.amazonaws.com \
     --source-arn "arn:aws:s3:::$bucket_name"
 
