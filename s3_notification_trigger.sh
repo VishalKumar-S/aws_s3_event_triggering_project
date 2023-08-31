@@ -56,16 +56,17 @@ echo "Bucket output : $bucket_output"
 zip -r s3-lambda-function.zip ./s3-lambda-function
 
 sleep 5
-#create a lambda function
+# Create a Lambda function
 aws lambda create-function \
---region "$aws_region"\
---function-name "$lambda_func_name" \
---runtime "python3.8" \
---handler "s3-lambda-function/s3-lambda-function.lambda_handler" \
---memory-size 128\
---timeout 30\
---role "arn:aws:iam::$aws_account_id:role/$role_name" \
---zip-file "fileb://s3-lambda-function.zip"
+  --region "$aws_region" \
+  --function-name $lambda_func_name \
+  --runtime "python3.8" \
+  --handler "s3-lambda-function/s3-lambda-function.lambda_handler" \
+  --memory-size 128 \
+  --timeout 30 \
+  --role "arn:aws:iam::$aws_account_id:role/$role_name" \
+  --zip-file "fileb://./s3-lambda-function.zip"
+
 
 
 #add invoke permissions to the s3 bucket to invoke lambda
