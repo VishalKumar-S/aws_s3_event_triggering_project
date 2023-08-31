@@ -59,7 +59,7 @@ sleep 5
 #create a lambda function
 aws lambda create-function \
 --region "$aws_region"\
---function-name $lambda_func_name \
+--function-name "$lambda_func_name" \
 --zip-file "fileb://s3-lambda-function.zip"\
 --handler "s3-lambda-function/s3-lambda-function.lambda_handler" \
 --runtime "python3.8" \
