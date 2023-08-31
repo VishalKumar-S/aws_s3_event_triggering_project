@@ -7,6 +7,7 @@ def lambda_handler(event,context):
 
 print(f"File '{object_key}' is uploaded to the bucket '{bucket_name}'")
 
+#send a notification via SNS
 sns_client=boto3.client('sns')
 topic_arn='arn:aws:sns:us-east-1:<account_id>:s3-lambda-sns'
 
