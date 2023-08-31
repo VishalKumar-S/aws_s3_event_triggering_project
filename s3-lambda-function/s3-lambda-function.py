@@ -9,7 +9,7 @@ def lambda_handler(event, context):
 
     # send a notification via SNS
     sns_client = boto3.client('sns')
-    topic_arn = 'arn:aws:sns:us-east-1:<account_id>:s3-lambda-sns'
+    topic_arn = 'arn:aws:sns:us-east-1:165617766510:s3-lambda-sns'
 
     sns_client.publish(
         TopicArn=topic_arn,
