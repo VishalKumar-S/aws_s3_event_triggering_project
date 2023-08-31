@@ -28,7 +28,7 @@ role_response=$(aws iam create-role --role-name s3-lamba-sns --assume-role-polic
       "Effect": "Allow",
       "Principal": {
         "Service": ["lambda.amazonaws.com",
-                    "s3.amazonaws.com:,
+                    "s3.amazonaws.com",
                     "sns.amazonaws.com"
                     ]
       },
