@@ -16,7 +16,7 @@ aws_account_id=$(aws sts get-caller-identity --query 'Account' --output text)
 #setting up aws variables
 aws_region="us-east-1"
 bucket_name="vishal-kumar-bucket"
-lambda_func_name="s3 lambda function"
+lambda_func_name="s3-lambda-function"
 role_name="s3-lamba-sns"
 email_address="vk28.02.2004@gmail.com"
 
